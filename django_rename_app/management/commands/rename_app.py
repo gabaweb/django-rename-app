@@ -143,7 +143,7 @@ class Command(BaseCommand):
                             )
 
                         query = (
-                            f"ALTER TABLE {old_table_name} "
+                            f"ALTER TABLE IF EXISTS {old_table_name} "
                             f"RENAME CONSTRAINT {constraint} "
                             f"TO {new_constraint_name}"
                         )
@@ -196,7 +196,7 @@ class Command(BaseCommand):
 
                 try:
                     query = (
-                        f'ALTER TABLE "{old_table_name}" '
+                        f'ALTER TABLE IF EXISTS "{old_table_name}" '
                         f'RENAME TO "{new_table_name}"'
                     )
                     cursor.execute(query)
